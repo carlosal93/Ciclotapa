@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ciclotapa Llucmajor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script>
+    <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: "whitesmoke";
+                font-family: "Noto Sans", sans-serif;
+                color: #3d3d3d;
+            }
+            #title {
+                position: fixed;
+                margin-top: auto;
+                top: 10px;
+                right: 60px;
+                font-size: 2em;
+                font-family: "Lora", serif;
+                letter-spacing: .04em;
+                padding: 10px 15px;
+                background-color: (255, 255, 255, 0.5);
+                border: 1px solid transparent;
+                border-radius: 3px;
+                z-index: 800;
+            }
+            #description h2 {
+                font-family: "Lora", serif;
+                letter-spacing: .04em;
+            }
+            #map {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+            }
+            #description {
+                position: fixed;
+                bottom: 20px;
+                right: 10px;
+                width: 280px;
+                padding: 0px 15px;
+                background-color: rgba(255, 255, 255, 0.7);
+                border: 1px solid grey;
+                border-radius: 3px;
+                z-index: 800;
+            }
+            #description p {
+                font-size: .9em;
+                line-height: 1.5em;
+            }
+            #description a {
+                color: #005daa;
+                text-decoration: none;
+            }
+            #description a:hover {
+                text-decoration: underline;
+            }
+            .legend {
+                padding: 6px 8px;
+                background-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+            }
+            .legend i {
+                width: 18px;
+                height: 18px;
+                float: left;
+                margin-right: 8px;
+                opacity: 0.77;
+            }
+            div.legend.leaflet-control br {
+                clear: both;
+            }
+
+        </style>
+</head>
+<body>
+    <h1 id="title">Ruta de la Ciclotapa de Llucmajor </h1>
+        <div id="map"></div>
+        <div id="description">
+            <h2>Información</h2>
+            <p>El siguiente mapa muestra los establecimientos que organizan este año la ya conocida como "Ciclotapa".</p>
+            <p>Nacida en 2015 por iniciativa de restauradores del núcleo de Llucmajor y la asociación juvenil "Sa Portassa", este evento anima a sacar las bicicletas a la calle y degustar las cervezas y tapas de los establecimientos del pueblo. </p>
+            <h4>Para más información:</h4>
+            <p> <a href="https://es-es.facebook.com/groups/1413101675618157/" target="_blank">Sa Portassa</a></p>
+            <p> <a href="https://llucmajor.org/ca" target="_blank">Ajuntament de Llucmajor</a></p>
+            <h3>Patrocinado por:</h3>
+            <p><img width="70%" src="images\llucmajor.png">.</p>
+
+        </div>
+    <script>
+
+// Create variable to hold map element, give initial settings to map
+let map = L.map("map", {center: [39.4911439786693, 2.891013780609807], zoom: 16});
+
+// Add OpenStreetMap tile layer to map element
+L.tileLayer(
+    'https://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}
+).addTo(map);
+
+// Add point
+var bike1 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/1-circle-c.png',
+    iconSize:     [35, 35], 
+});
+var bike2 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/2-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike3 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/3-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike4 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/4-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike5 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/5-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike6 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/6-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike7 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/7-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike8 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/8-circle.png',
+    iconSize:     [35, 35], 
+});
+var bike9 = L.icon({
+    iconUrl: 'https://img.icons8.com/dusk/50/000000/9-circle.png',
+    iconSize:     [35, 35], 
+});
+let Es_Xibiu = L.marker([39.4902720377823, 2.88567436971558],{icon:bike1}).addTo(map);
+let Can_Chame = L.marker([39.48711963525875, 2.886405264887384],{icon:bike2}).addTo(map);
+let Can_Munyoz = L.marker([39.48717777000618, 2.8865767578498707],{icon:bike3}).addTo(map);
+let Ca_Na_Neus = L.marker([39.48816015418514, 2.8888402444167895],{icon:bike4}).addTo(map);
+let Bar_Sport = L.marker([39.49034641625768, 2.890935201927047],{icon:bike5}).addTo(map);
+let Bar_Caliuet = L.marker([39.49070693666723, 2.8910251984378132],{icon:bike6}).addTo(map);
+let Bar_Pou = L.marker([39.491083219928626, 2.891466667054098],{icon:bike7}).addTo(map);
+let Sa_Foganya = L.marker([39.49399870446024, 2.8958792067831753],{icon:bike8}).addTo(map);
+let Bar_Tropical = L.marker([39.48695853161484, 2.8964979454141835],{icon:bike9}).addTo(map);
+
+// Add line
+let line = L.polyline(
+    [[39.4902720377823, 2.88567436971558], [39.48711963525875, 2.886405264887384], [39.48717777000618, 2.8865767578498707], [39.48816015418514, 2.8888402444167895], [39.49034641625768, 2.890935201927047], [39.49070693666723, 2.8910251984378132], [39.491083219928626, 2.891466667054098], [39.49399870446024, 2.8958792067831753], [39.48695853161484, 2.8964979454141835]],
+  {color: "yellow", weight: 3}
+).addTo(map);
+
+// Add popup
+Es_Xibiu.bindPopup(
+    "<h1>Es Xibiu</h1><b>Localización:</b> Carrer del Grup Escolar, 45.<b> Teléfono:</b>871 03 58 57.<b> Horario: </b>18:00 - 23:30 <img width=50% src='images\sibiu.jpg'/>"
+);
+Can_Chame.bindPopup(
+    "<h1>Ca'n Chame</h1><b>Localización:</b> Passeig Jaume III, 13.<b> Teléfono:</b>971 66 26 45.<b> Horario: </b>10:00 - 23:30 <img src='images\Can_chame.jpg'/>"
+);
+Can_Munyoz.bindPopup(
+    "<h1>Ca'n Munyoz</h1><b>Localización:</b> Passeig Jaume III, 11.<b> Teléfono:</b>971 34 96 01.<b> Horario: </b>8:00 - 23:30 <img src='images\canmunyoz.jpg'/>"
+);
+Ca_Na_Neus.bindPopup(
+    "<h1>Ca Na Neus</h1><b>Localización:</b> Carrer del Bisbe Taxaquet, 82.<b> Teléfono:</b>971 62 42 15.<b> Horario: </b>10:00 - 21:00 <img src='images\cananeus.jpg'/>"
+);
+Bar_Sport.bindPopup(
+    "<h1>Bar Sport</h1><b>Localización:</b> Plaça Espanya, 51.<b> Teléfono:</b>971 66 00 01.<b> Horario: </b>7:00 - 23:00 <img src='images\barsport.jpg'/>"
+);
+Bar_Caliuet.bindPopup(
+    "<h1>Bar Caliuet</h1><b>Localización:</b> Plaça Espanya, 57.<b> Teléfono:</b>871 57 16 48.<b> Horario: </b>8:00 - 23:00 <img src='\images\caliuet.jpg'/>"
+);
+Bar_Pou.bindPopup(
+    "<h1>Bar Pou</h1><b>Localización:</b> Plaça Espanya, 10.<b> Teléfono:</b>971 42 37 02.<b> Horario: </b>7:00 - 23:00 <img src='\images\canpou.jpg'/>"
+);
+Sa_Foganya.bindPopup(
+    "<h1>Sa Foganya</h1><b>Localización:</b> Carrer de Gràcia, 59.<b> Teléfono:</b>971 66 18 87.<b> Horario: </b>19:00 - 23:00 <img src='\images\safoganya.jpg'/>"
+);
+
+Bar_Tropical.bindPopup(
+    "<h1>Bar Tropical</h1><b>Localización:</b> Avinguda Carles V, 49.<b> Teléfono:</b>971 66 11 17.<b> Horario: </b>13:00 - 22:30 <img src='\images\tropical.jpg'/>"
+);
+  // Create Leaflet control object for legend
+  let legend = L.control({position: "bottomleft"});
+
+// Function that runs when legend is added to map
+legend.onAdd = function() {
+
+    // Create <div> element and populate it with HTML
+    let div = L.DomUtil.create("div", "legend");
+    div.innerHTML =
+    '<b>LOCALES PARTICIPANTES</b>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/1-circle-c.png", width=25>Es Xibiu<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/2-circle.png", width=25>Can Chame<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/3-circle.png", width=25>Can Munyoz<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/4-circle.png", width=25>Ca Na Neus<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/5-circle.png", width=25>Bar Sport<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/6-circle.png", width=25>Bar Caliuet<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/7-circle.png", width=25>Bar Pou<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/8-circle.png", width=25>Sa Foganya<br>' +
+    '<br><img src="https://img.icons8.com/dusk/50/000000/9-circle.png", width=25>Bar Tropical<br>' 
+
+    // Return the legend <div> containing the HTML content
+    return div;
+
+};
+
+// Add Legend to Map
+legend.addTo(map);
+    </script>
+
+</body>
+</html>
+
